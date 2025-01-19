@@ -14,11 +14,18 @@ function App() {
     setTasks([...tasks, newTask]);
   };
 
+  const updateTask = (taskId, completed) => {
+    const updatedTasks = tasks.map((task) =>
+      task.id === taskId ? { ...task, completed } : task
+    );
+    setTasks(updatedTasks);
+  };
+
   return (
     <div className="App">
       <h1>Task Manager</h1>
       <AddTask addTask={addTask} />
-      <TaskList tasks={tasks} />
+      <TaskList tasks={tasks} updateTask={updateTask} />
     </div>
   );
 }

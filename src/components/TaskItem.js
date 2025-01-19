@@ -1,9 +1,11 @@
 import React from 'react';
 
-const TaskItem = ({ task }) => {
-  const { text, completed } = task;
+const TaskItem = ({ task, updateTask }) => {
+  const { id, text, completed } = task;
 
-  const handleChange = () => {};
+  const handleChange = () => {
+    updateTask(id, !completed);
+  };
 
   return (
     <li
