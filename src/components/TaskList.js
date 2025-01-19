@@ -3,7 +3,7 @@ import TaskItem from './TaskItem';
 
 class TaskList extends Component {
   render() {
-    const { tasks } = this.props;
+    const { tasks, updateTask } = this.props;
 
     return (
       <div>
@@ -15,6 +15,7 @@ class TaskList extends Component {
               <TaskItem
                 key={task.id}
                 task={task}
+                updateTask={updateTask}
               />
             ))}
           </ul>
