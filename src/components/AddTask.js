@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 
-export default function AddTask() {
+export default function AddTask({ addTask }) {
   const [taskText, setTaskText] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (taskText.trim()) {
+      addTask(taskText);
       setTaskText("");
     }
   };
