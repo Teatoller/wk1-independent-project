@@ -1,12 +1,12 @@
-
-import React, { useState } from "react";import './App.css';
-import AddTask from './components/AddTask';
+import React, { useState } from "react";
+import "./App.css";
+import AddTask from "./components/AddTask";
 import TaskList from "./components/TaskList";
 
 function App() {
   const [tasks, setTasks] = useState([
-    { id: 1, text: 'Learn React', completed: false },
-    { id: 2, text: 'Build a project', completed: false },
+    { id: 1, text: "Learn React", completed: false },
+    { id: 2, text: "Build a project", completed: false },
   ]);
 
   const addTask = (taskText) => {
@@ -14,7 +14,14 @@ function App() {
     setTasks([...tasks, newTask]);
   };
 
-  const updateTask = (taskId, completed) => {
+  const updateTaskContent = (taskId, newText) => {
+    const updatedTasks = tasks.map((task) =>
+      task.id === taskId ? { ...task, text: newText } : task
+    );
+    setTasks(updatedTasks);
+  };
+
+  const updateTaskStatus = (taskId, completed) => {
     const updatedTasks = tasks.map((task) =>
       task.id === taskId ? { ...task, completed } : task
     );
@@ -25,7 +32,11 @@ function App() {
     <div className="App">
       <h1>Task Manager</h1>
       <AddTask addTask={addTask} />
-      <TaskList tasks={tasks} updateTask={updateTask} />
+      <TaskList
+        tasks={tasks}
+        updateTaskContent={updateTaskContent}
+        updateTaskStatus={updateTaskStatus}
+      />
     </div>
   );
 }
